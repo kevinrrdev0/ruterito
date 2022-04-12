@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ruterito</string>
+    <string name="error_unknown">Unknown error</string>
+    <string name="error_login">Error Servidor</string>
+</resources>

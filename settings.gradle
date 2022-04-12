@@ -1,0 +1,22 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "Ruterito"
+include ':app'
+include ':core'
+include ':core-ui'
+include ':driver'
+include ':driver:driver_data'
+include ':driver:driver_domain'
+include ':driver:driver_presentation'
