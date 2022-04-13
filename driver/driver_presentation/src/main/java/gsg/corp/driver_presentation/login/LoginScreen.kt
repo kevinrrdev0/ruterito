@@ -77,7 +77,7 @@ fun LoginScreen(
         ) {
             ConstraintLayout {
 
-                val (surface, fab) = createRefs()
+                val (surface) = createRefs()
 
                 Surface(
                     modifier = Modifier
@@ -200,23 +200,23 @@ fun LoginScreen(
                     }
                 }
 
-                FloatingActionButton(
-                    modifier = Modifier
-                        .size(56.dp)
-                        .constrainAs(fab) {
-                            top.linkTo(surface.top, margin = (-36).dp)
-                            end.linkTo(surface.end, margin = 36.dp)
-                        },
-                    backgroundColor = MaterialTheme.colors.primary,
-                    onClick = {}
-                ) {
-                    Icon(
-                        modifier = Modifier.size(36.dp),
-                        imageVector = Icons.Default.ArrowForward,
-                        contentDescription = "Forward Icon",
-                        tint = Color.White
-                    )
-                }
+//                FloatingActionButton(
+//                    modifier = Modifier
+//                        .size(56.dp)
+//                        .constrainAs(fab) {
+//                            top.linkTo(surface.top, margin = (-36).dp)
+//                            end.linkTo(surface.end, margin = 36.dp)
+//                        },
+//                    backgroundColor = MaterialTheme.colors.primary,
+//                    onClick = {onNextClick()}
+//                ) {
+//                    Icon(
+//                        modifier = Modifier.size(36.dp),
+//                        imageVector = Icons.Default.ArrowForward,
+//                        contentDescription = "Forward Icon",
+//                        tint = Color.White
+//                    )
+//                }
             }
         }
     }

@@ -13,6 +13,7 @@ import gsg.corp.driver_domain.use_case.DriverUseCases
 import gsg.corp.core.R
 import gsg.corp.core.domain.preferences.Preferences
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -39,6 +40,7 @@ class LoginViewModel
     init {
         if (pref.loadSaveCredentials()){
             username = pref.loadUserInfo().username
+            saveCredentials = pref.loadSaveCredentials()
         }
     }
     
@@ -54,13 +56,12 @@ class LoginViewModel
                         pref.saveRole(it.role)
                         pref.saveUserName(it.user)
                         pref.saveCredentials(saveCredentials)
+                        delay(2000)
                         _uiEvent.send(UiEvent.Success)
                     }
-                    Log.d("kevinrrdev", "onLogin: ${it.name}")
                     isLoading = false
                 }
                 .onFailure {
-                    Log.d("kevinrrdev", "onFaliure: ${it.message}")
                     isLoading = false
                     _uiEvent.send(
                         UiEvent.ShowSnackBar(

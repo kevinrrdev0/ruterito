@@ -63,6 +63,8 @@ dependencies {
     implementation(Compose.viewModelCompose)
     implementation(Compose.activityCompose)
     implementation(AndroidX.constraintLayout)
+    //implementation(Accompanist.navigation)
+    implementation(Accompanist.animationNav)
 
     implementation(DaggerHilt.hiltAndroid)
     kapt(DaggerHilt.hiltCompiler)
