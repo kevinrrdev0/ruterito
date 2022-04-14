@@ -27,11 +27,10 @@ fun GlobalOutLineButton(
     OutlinedButton(onClick = { onClick() },
         enabled = isEnable,
         border = BorderStroke(1.dp, if (isEnable) RedGsg else LightGray),
-        modifier = modifier
-            .fillMaxWidth()) {
+        modifier = modifier) {
         Text(text,
             style = textStyle,
-            modifier = modifier.padding(LocalSpacing.current.spaceExtraSmall),
+            modifier = modifier.padding(LocalSpacing.current.default),
             textAlign = TextAlign.Center)
     }
 }

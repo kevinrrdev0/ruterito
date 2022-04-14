@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                 val scaffoldState = rememberScaffoldState()
                 BoxWithConstraints {
                     AnimatedNavHost(navController = navController,
-                        startDestination = Route.DASHBOARD)
+                        startDestination = Route.LOGIN)
                     {
                         addLogin(navController = navController, scaffoldState)
                         addDashBoard(navController = navController)

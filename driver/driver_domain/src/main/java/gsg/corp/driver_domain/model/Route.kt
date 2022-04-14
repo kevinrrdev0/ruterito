@@ -7,6 +7,7 @@ data class Route(
     val providerPhone:String,
     val customer:String,
     val customerPhone:String,
+    val customerOtherPhone:String,
     val customerDistrict:String,
     val customerAddress:String,
     val customerRef:String,
