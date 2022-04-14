@@ -19,6 +19,7 @@ import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
 import gsg.corp.driver_presentation.dashboard.DashBoardScreen
 import gsg.corp.driver_presentation.login.LoginScreen
+import gsg.corp.driver_presentation.route.RouteScreen
 import gsg.corp.ruterito.navigation.Route
 import gsg.corp.ruterito.ui.theme.RuteritoTheme
 
@@ -33,10 +34,11 @@ class MainActivity : ComponentActivity() {
                 val scaffoldState = rememberScaffoldState()
                 BoxWithConstraints {
                     AnimatedNavHost(navController = navController,
-                        startDestination = Route.LOGIN)
+                        startDestination = Route.DASHBOARD)
                     {
                         addLogin(navController = navController, scaffoldState)
-                        addDashBoard(navController = navController, scaffoldState = scaffoldState)
+                        addDashBoard(navController = navController)
+                        addRoute(navController = navController)
                     }
                 }
 
@@ -88,8 +90,7 @@ fun NavGraphBuilder.addLogin(
 
 @ExperimentalAnimationApi
 fun NavGraphBuilder.addDashBoard(
-    navController: NavHostController,
-    scaffoldState: ScaffoldState,
+    navController: NavHostController
 ) {
     composable(
         route = Route.DASHBOARD,
@@ -118,7 +119,44 @@ fun NavGraphBuilder.addDashBoard(
             )
         }
     ) {
-        DashBoardScreen()
+        DashBoardScreen(onNextClick = {navController.navigate(Route.ROUTE)})
     }
 }
+
+
+@ExperimentalAnimationApi
+fun NavGraphBuilder.addRoute(
+    navController: NavHostController
+) {
+    composable(
+        route = Route.ROUTE,
+        enterTransition = {
+            slideInHorizontally(
+                initialOffsetX = { 1000 },
+                animationSpec = tween(500)
+            )
+        },
+        exitTransition = {
+            slideOutHorizontally(
+                targetOffsetX = { -1000 },
+                animationSpec = tween(500)
+            )
+        },
+        popEnterTransition = {
+            slideInHorizontally(
+                initialOffsetX = { -1000 },
+                animationSpec = tween(500)
+            )
+        },
+        popExitTransition = {
+            slideOutHorizontally(
+                targetOffsetX = { 1000 },
+                animationSpec = tween(500)
+            )
+        }
+    ) {
+        RouteScreen()
+    }
+}
+
 
