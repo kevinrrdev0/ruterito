@@ -1,8 +1,8 @@
 package gsg.corp.ruterito.navigation
 
 object Route {
-    const val LOGIN = "login"
-    const val DASHBOARD = "dashboard"
-    const val ROUTE = "route"
-    const val ROUTE_DETAIL= "route_detail"
+    const val LOGIN = ""
+    const val DASHBOARD = ""
+    const val ROUTE = ""
+    const val ROUTE_DETAIL= ""
 }

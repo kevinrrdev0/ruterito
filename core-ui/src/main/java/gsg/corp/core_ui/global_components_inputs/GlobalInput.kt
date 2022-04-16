@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import gsg.corp.core_ui.LightGray
+import gsg.corp.core_ui.global_components_ui.GlobalErrorCaption
 
 @Composable
 fun GlobalInput(

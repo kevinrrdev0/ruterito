@@ -1,5 +1,6 @@
 package gsg.corp.driver_presentation.route
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.layout.*
@@ -23,6 +24,7 @@ import gsg.corp.driver_presentation.dashboard.components.RouteItem
 
 @Composable
 fun RouteScreen(
+    onGoDetail:(Int) ->Unit,
     viewModel: RouteViewModel = hiltViewModel(),
 ) {
     val spacing = LocalSpacing.current
@@ -50,17 +52,10 @@ fun RouteScreen(
             items(state.listRoutes) { route ->
                 RouteItem(route,
                     onClick = {
-
+                              viewModel.onEvent(RouteEvent.OnToggleRouteClick(route))
                     },
-                    onCall1 = {
-
-                    },
-                    onCall2 = {
-
-                    },
-                    onMessage = {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=51997479520"))
-                        context.startActivity(intent)
+                    onGoDetail = {
+                        onGoDetail(route.route.id)
                     }
                 )
             }

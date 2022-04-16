@@ -22,12 +22,17 @@ fun gsg.corp.driver_data.remote.dto.route.Data.toRoute(): Route {
 
     val number2 = if (list.isNotEmpty() && list.size==2) list[1].trim() else ""
 
+    val list2 = cel_proveedor.split(delimit)
+    val cellProvider = if (list2.isNotEmpty()) list2[0].trim() else ""
+
+    val otherCellProvider = if (list2.isNotEmpty() && list2.size==2) list2[1].trim() else ""
 
     return Route(
         id = id,
         routeType = tipo_ruta,
         provider = proveedor,
-        providerPhone = cel_proveedor,
+        providerPhone = cellProvider,
+        providerOtherPhone = otherCellProvider,
         customer = cliente,
         customerPhone = number1,
         customerOtherPhone = number2,

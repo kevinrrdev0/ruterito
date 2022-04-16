@@ -5,6 +5,7 @@ data class Route(
     val routeType:String,
     val provider:String,
     val providerPhone:String,
+    val providerOtherPhone:String,
     val customer:String,
     val customerPhone:String,
     val customerOtherPhone:String,
