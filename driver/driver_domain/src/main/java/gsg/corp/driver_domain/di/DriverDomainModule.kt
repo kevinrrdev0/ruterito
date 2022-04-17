@@ -8,6 +8,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import gsg.corp.driver_domain.repository.DriverRepository
 import gsg.corp.driver_domain.use_case.DriverUseCases
 import gsg.corp.driver_domain.use_case.GetRoutes
+import gsg.corp.driver_domain.use_case.UpdateRoute
 import gsg.corp.driver_domain.use_case.VerificationUser
 
 @Module
@@ -21,7 +22,8 @@ object DriverDomainModule {
     ):DriverUseCases{
         return DriverUseCases(
             verificationUser = VerificationUser(repository),
-            getRoutes = GetRoutes(repository)
+            getRoutes = GetRoutes(repository),
+            updateRoute = UpdateRoute(repository)
         )
     }
 

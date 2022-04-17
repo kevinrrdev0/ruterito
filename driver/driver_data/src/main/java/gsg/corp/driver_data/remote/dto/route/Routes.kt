@@ -1,6 +1,6 @@
 package gsg.corp.driver_data.remote.dto.route
 
-data class Data(
+data class Routes(
     val cel_cliente: String,
     val cel_proveedor: String,
     val cliente: String,

@@ -58,6 +58,7 @@ fun CameraGalleryDialog(
     modifier: Modifier = Modifier,
     color: Color = RedGsg,
     textStyle: TextStyle = MaterialTheme.typography.body1,
+    exposeUri:(Uri)->Unit
 ) {
     if (isVisible) {
         val context = LocalContext.current
@@ -76,6 +77,9 @@ fun CameraGalleryDialog(
             contract = ActivityResultContracts.GetContent(),
         ) { uri: Uri? ->
             imageUri = uri
+            uri?.let{
+                 //exposeUri(it)
+            }
         }
 
         val cameraLauncher = rememberLauncherForActivityResult(
@@ -114,8 +118,8 @@ fun CameraGalleryDialog(
                         Row() {
                             Card(
                                 modifier = Modifier
-                                    .size(80.dp)
-                                    .clip(CircleShape)
+                                    .size(80.dp),
+                                elevation = 8.dp
                             ) {
                                 Icon(
                                     Icons.Default.AccountCircle,
@@ -137,8 +141,7 @@ fun CameraGalleryDialog(
                                             contentDescription = "Image",
                                             alignment = Alignment.TopCenter,
                                             modifier = Modifier
-                                                .size(128.dp)
-                                                .clip(CircleShape),
+                                                .size(128.dp),
                                             contentScale = ContentScale.Fit
                                         )
                                     }
@@ -241,6 +244,7 @@ fun CameraGalleryDialog(
                                                         imageUri!!,
                                                         label
                                                     )
+
 //                                                    uploadPhoto(
 //                                                        compressedImage!!,
 //                                                        "$label.jpg",

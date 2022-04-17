@@ -1,10 +1,9 @@
 package gsg.corp.driver_data.mapper
 
-import gsg.corp.driver_data.remote.dto.Data
 import gsg.corp.driver_domain.model.Route
 import gsg.corp.driver_domain.model.UserInfo
 
-fun Data.toUserInfo(): UserInfo {
+fun gsg.corp.driver_data.remote.dto.UserInfo.toUserInfo(): UserInfo {
     return UserInfo(
         id = idusuario,
         name = nombres,
@@ -14,7 +13,7 @@ fun Data.toUserInfo(): UserInfo {
     )
 }
 
-fun gsg.corp.driver_data.remote.dto.route.Data.toRoute(): Route {
+fun gsg.corp.driver_data.remote.dto.route.Routes.toRoute(): Route {
 
     val delimit = "/"
     val list = cel_cliente.split(delimit)

@@ -1,6 +1,6 @@
 package gsg.corp.driver_data.remote.dto
 
-data class Data(
+data class UserInfo(
     val grupo: Int,
     val id_rol: Int,
     val idusuario: Int,

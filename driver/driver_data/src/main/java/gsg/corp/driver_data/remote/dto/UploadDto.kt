@@ -1,6 +1,6 @@
 package gsg.corp.driver_data.remote.dto
 
-data class LoginDto(
+data class UploadDto(
     val codigo: String,
-    val userInfo: UserInfo
+    val respuesta:String
 )
