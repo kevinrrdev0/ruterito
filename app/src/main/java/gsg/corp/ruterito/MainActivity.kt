@@ -32,9 +32,9 @@ class MainActivity : ComponentActivity() {
             RuteritoTheme {
                 val navController = rememberNavController()
                 val scaffoldState = rememberScaffoldState()
-
                     NavHost(navController = navController,
                         startDestination = NavigationRoute.Route.route)
+
                     {
                         addLogin(navController = navController, scaffoldState)
                         addDashBoard(navController = navController)
