@@ -25,7 +25,9 @@ interface DriverApi {
 
     @Multipart
     @POST(STATUS_ROUTE_V3)
-    suspend fun getUpload(@Part("file") file: RequestBody
+    suspend fun getUpload(@Part file: MultipartBody.Part,
+                          @Part("id") id: RequestBody,
+                          @Part("id_state") id_state: RequestBody
     ): UploadDto
 
     companion object {

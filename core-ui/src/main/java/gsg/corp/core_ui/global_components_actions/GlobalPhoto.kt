@@ -58,7 +58,7 @@ fun CameraGalleryDialog(
     modifier: Modifier = Modifier,
     color: Color = RedGsg,
     textStyle: TextStyle = MaterialTheme.typography.body1,
-    exposeUri:(Uri)->Unit
+    exposeUri:(String)->Unit
 ) {
     if (isVisible) {
         val context = LocalContext.current
@@ -87,6 +87,12 @@ fun CameraGalleryDialog(
         ) { btm: Bitmap? ->
             bitmap.value = btm
             imageUri = null
+
+            exposeUri(compressCamera(
+                firebase_context,
+                bitmap.value!!,
+                label
+            )?:"")
         }
 
         val permissionLauncher = rememberLauncherForActivityResult(
@@ -198,16 +204,19 @@ fun CameraGalleryDialog(
                                                 else -> {
                                                     isCameradelected = true
                                                     permissionLauncher.launch(Manifest.permission.CAMERA)
+                                                    permissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
                                                 }
                                             }
                                             isShowAlert.value = false
                                             if (bitmap.value != null) {
                                                 GlobalScope.launch(Dispatchers.IO) {
-                                                    val compressedCamera = compressCamera(
-                                                        firebase_context,
-                                                        bitmap.value!!,
-                                                        label
-                                                    )
+//                                                    val compressedCamera = compressCamera(
+//                                                        firebase_context,
+//                                                        bitmap.value!!,
+//                                                        label
+//                                                    )
+
 
                                                 }
                                             }
@@ -239,11 +248,11 @@ fun CameraGalleryDialog(
                                             isShowAlert.value = false
                                             if (imageUri != null) {
                                                 GlobalScope.launch(Dispatchers.IO) {
-                                                    val compressedImage = compressImage(
-                                                        firebase_context,
-                                                        imageUri!!,
-                                                        label
-                                                    )
+//                                                    val compressedImage = compressImage(
+//                                                        firebase_context,
+//                                                        imageUri!!,
+//                                                        label
+//                                                    )
 
 //                                                    uploadPhoto(
 //                                                        compressedImage!!,
@@ -292,7 +301,7 @@ fun CameraGalleryDialog(
     }
 }
 
-private fun compressCamera(context: ComponentActivity, bitmap: Bitmap, name: String):Uri? {
+private fun compressCamera(context: ComponentActivity, bitmap: Bitmap, name: String):String? {
     val bytes = ByteArrayOutputStream()
     bitmap.compress(Bitmap.CompressFormat.JPEG, 60, bytes)
     val path: String = MediaStore.Images.Media.insertImage(
@@ -301,7 +310,7 @@ private fun compressCamera(context: ComponentActivity, bitmap: Bitmap, name: Str
         name,
         null
     )
-    return Uri.parse(path)
+    return path
 }
 
 private fun compressImage(context: ComponentActivity, uri: Uri, name: String):Uri? {

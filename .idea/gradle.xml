@@ -20,7 +20,6 @@
             <option value="$PROJECT_DIR$/driver/driver_presentation" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

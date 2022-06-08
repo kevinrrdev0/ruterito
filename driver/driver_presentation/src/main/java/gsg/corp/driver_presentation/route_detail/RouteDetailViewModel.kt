@@ -21,28 +21,38 @@ import javax.inject.Inject
 @HiltViewModel
 class RouteDetailViewModel @Inject constructor(
     private val driverUseCases: DriverUseCases,
-    savedStateHandle: SavedStateHandle
-):ViewModel() {
+    savedStateHandle: SavedStateHandle,
+) : ViewModel() {
     var state by mutableStateOf(RouteDetailState())
-    private set
+        private set
     private val _uiEvent = Channel<UiEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
+
     init {
-        val argument = savedStateHandle.get<Int>("id")
-        Log.d("kevinrrdev", "argument: $argument")
-    }
-
-    fun onUriChange(item:Uri){
-        state = state.copy(uri = item)
-    }
-
-    fun onUploadPhoto(){
-        val fileName = "data.txt"
-
-        var file = File(fileName)
-        viewModelScope.launch {
-            driverUseCases.updateRoute(file = file,uri =state.uri,"")
+        val idRoute = savedStateHandle.get<Int>("id")
+        idRoute?.let {
+            state = state.copy(idRoute = idRoute)
         }
+    }
+
+    fun onEvent(event: RouteDetailEvent) {
+        when (event) {
+            is RouteDetailEvent.OnCommentEnter -> state.copy(comment = event.comment)
+            is RouteDetailEvent.OnPathPhotoCollect -> state.copy(pathPhotoCollect = event.path)
+            is RouteDetailEvent.OnPathPhotoState -> state.copy(pathPhotoState = event.path)
+            is RouteDetailEvent.OnStateSelected -> state.copy(idState = event.id)
+        }.also { state = it }
+    }
+
+    fun onPathChange(item: String) {
+//        state = state.copy(path = item)
+    }
+
+    fun onUploadPhoto() {
+//        val file = File(state.path)
+//        viewModelScope.launch {
+//            driverUseCases.updateRoute(file = file, uri = Uri.fromFile(file), state.path)
+//        }
 
     }
 

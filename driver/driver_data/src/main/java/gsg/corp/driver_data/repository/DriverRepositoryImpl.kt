@@ -1,6 +1,7 @@
 package gsg.corp.driver_data.repository
 
 import android.net.Uri
+import android.util.Log
 import gsg.corp.driver_data.mapper.toRoute
 import gsg.corp.driver_data.mapper.toUserInfo
 import gsg.corp.driver_data.remote.DriverApi
@@ -45,19 +46,25 @@ class DriverRepositoryImpl(
     }
 
     override suspend fun updateRoute(file: File, uri: Uri, path: String) {
-        val files= File(uri.path);
+
         val profileImage: RequestBody = RequestBody.create(
             "image/jpg".toMediaTypeOrNull(),
-            files
+            file
         )
-        val bodyImagen = RequestBody
 
         val profileImageBody: MultipartBody.Part =
             MultipartBody.Part.createFormData(
                 "file",
-                files.name, profileImage
+                file.name, profileImage
             )
-        val routeDto = api.getUpload(profileImage)
+        val id =getMultiPartFormRequestBody("1")
+        val id_state =getMultiPartFormRequestBody("4")
+        val routeDto = api.getUpload(profileImageBody,id,id_state)
         routeDto.codigo
+    }
+
+    fun getMultiPartFormRequestBody(tag: String?): RequestBody {
+        return RequestBody.create(MultipartBody.FORM, tag!!)
+
     }
 }
