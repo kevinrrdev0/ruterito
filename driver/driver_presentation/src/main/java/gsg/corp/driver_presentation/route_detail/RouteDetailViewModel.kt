@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import gsg.corp.core.Util.UiEvent
+import gsg.corp.core.domain.model.GeneralType
 import gsg.corp.driver_domain.use_case.DriverUseCases
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -30,6 +31,7 @@ class RouteDetailViewModel @Inject constructor(
 
     init {
         val idRoute = savedStateHandle.get<Int>("id")
+        Log.d("kevdev", "idroute:$idRoute ")
         idRoute?.let {
             state = state.copy(idRoute = idRoute)
         }
@@ -40,7 +42,7 @@ class RouteDetailViewModel @Inject constructor(
             is RouteDetailEvent.OnCommentEnter -> state.copy(comment = event.comment)
             is RouteDetailEvent.OnPathPhotoCollect -> state.copy(pathPhotoCollect = event.path)
             is RouteDetailEvent.OnPathPhotoState -> state.copy(pathPhotoState = event.path)
-            is RouteDetailEvent.OnStateSelected -> state.copy(idState = event.id)
+            is RouteDetailEvent.OnStateSelected -> state.copy(state = GeneralType(event.id,event.name))
         }.also { state = it }
     }
 

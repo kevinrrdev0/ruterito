@@ -122,7 +122,7 @@ fun NavGraphBuilder.addRouteDetail(
             }
         )
     ) {
-        val id = it.arguments?.getInt(ROUTE_DETAIL_ID)!!
+        //val id = it.arguments?.getInt(ROUTE_DETAIL_ID)!!
         RouteDetailScreen()
     }
 }

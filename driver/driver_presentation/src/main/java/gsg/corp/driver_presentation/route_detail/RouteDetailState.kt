@@ -6,9 +6,8 @@ import gsg.corp.core.domain.model.GeneralType
 data class RouteDetailState(
     val idRoute: Int = 0,
     val uri: Uri = Uri.EMPTY,
-    val idState: Int = 0,
+    val state: GeneralType = GeneralType(0,""),
     val listState: List<GeneralType> = listOf(
-        GeneralType(0, ""),
         GeneralType(9, "Registrado"),
         GeneralType(4, "En Ruta"),
         GeneralType(3, "Pendiente"),
