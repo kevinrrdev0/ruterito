@@ -54,7 +54,7 @@ dependencies {
     implementation Compose.viewModelCompose
     implementation Compose.activityCompose
     implementation AndroidX.constraintLayout
-
+    implementation Compose.paging
 
     kapt DaggerHilt.hiltCompiler
     implementation DaggerHilt.hiltAndroid

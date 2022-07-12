@@ -5,11 +5,11 @@ import gsg.corp.driver_domain.model.UserInfo
 
 fun gsg.corp.driver_data.remote.dto.UserInfo.toUserInfo(): UserInfo {
     return UserInfo(
-        id = idusuario,
-        name = nombres,
-        user = usuario,
-        idRole = id_rol,
-        role = rol
+        id = idusuario?:0,
+        name = nombres?:"",
+        user = usuario?:"",
+        idRole = id_rol?:1,
+        role = rol?:""
     )
 }
 

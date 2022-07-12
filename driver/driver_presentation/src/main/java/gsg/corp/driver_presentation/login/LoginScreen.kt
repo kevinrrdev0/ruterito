@@ -99,7 +99,7 @@ fun LoginScreen(
                         verticalArrangement = Arrangement.SpaceEvenly
                     ) {
                         Text(
-                            text = "¡Bienvenido Ruterito!",
+                            text = "¡Bienvenido Cinéfilo!",
                             style = MaterialTheme.typography.h4.copy(
                                 fontWeight = FontWeight.Medium
                             )

@@ -63,6 +63,8 @@ dependencies {
     implementation(Compose.viewModelCompose)
     implementation(Compose.activityCompose)
     implementation(AndroidX.constraintLayout)
+    implementation(Compose.paging)
+
     //implementation(Accompanist.navigation)
     //implementation(Accompanist.animationNav)
 
@@ -75,6 +77,10 @@ dependencies {
     implementation(project(Modules.driverData))
     implementation(project(Modules.driverDomain))
     implementation(project(Modules.driverPresentation))
+
+    implementation(project(Modules.movieData))
+    implementation(project(Modules.movieDomain))
+    implementation(project(Modules.moviePresentation))
 
     /* -- end include -- */
     implementation(AndroidX.coreKtx)

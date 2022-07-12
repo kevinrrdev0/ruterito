@@ -19,6 +19,8 @@ interface DriverApi {
 
     @POST(LOGIN_ROUTE_V2)
     suspend fun verificationUser(@Body verificationRequest: VerificationRequest): LoginDto
+    //MOVIE_HOME_ROUTE -> ?page=1&api_key=f46b58478f489737ad5a4651a4b25079
+
 
     @POST(ROUTE_DRIVER_V2)
     suspend fun getRoutes(@Body routeDriverRequest: RouteDriverRequest): RouteDto
@@ -31,6 +33,6 @@ interface DriverApi {
     ): UploadDto
 
     companion object {
-        const val BASE_URL = "http://159.203.109.69/api/v1/"
+        const val BASE_URL = "http://159.203.109.69/api/v1/"//http://159.203.109.69/api/v1/
     }
 }
